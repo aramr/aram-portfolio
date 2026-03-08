@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aram Rahimi — Portfolio 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-dim: rgba(255, 255, 255, 0.35);
+            --gray-hover: rgba(255, 255, 255, 0.7);
+            --gray-line: rgba(255, 255, 255, 0.08);
+            --gray-card: #161616;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            --section-pad: 40px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html, body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 40px;
+            mix-blend-mode: difference;
+        }
+
+        .nav-logo {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--white);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-logo:hover {
+            opacity: 0.6;
+        }
+
+        .nav-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            color: var(--gray-dim);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.35s cubic-bezier(0.25, 0.1, 0, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gray-hover);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--black);
+        }
+
+        .video-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video {
+            height: 62vh;
+            width: auto;
+            display: block;
+            object-fit: contain;
+            background: var(--black);
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.96);
+            animation: videoReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+        }
+
+        @keyframes videoReveal {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .video-glow {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 80px;
+            background: radial-gradient(ellipse, rgba(100, 120, 255, 0.08) 0%, transparent 70%);
+            filter: blur(30px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── SECTION BOTTOM LABELS ── */
+        .section-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 var(--section-pad) 36px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .section-nav-label {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--gray-dim);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            pointer-events: auto;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .section-nav-label:hover {
+            color: var(--white);
+        }
+
+        .section-nav-label .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .section-nav-label:hover .arrow {
+            transform: translateY(3px);
+        }
+
+        .portfolio-text {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 6vw, 96px);
+            font-weight: 800;
+            line-height: 0.88;
+            color: var(--white);
+            letter-spacing: -3px;
+            user-select: none;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── NAV ENTRY ANIMATIONS ── */
+        nav .nav-logo,
+        nav .nav-name,
+        nav .nav-links {
+            opacity: 0;
+            transform: translateY(-12px);
+            animation: navFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        nav .nav-logo  { animation-delay: 0.2s; }
+        nav .nav-name  { animation-delay: 0.3s; }
+        nav .nav-links { animation-delay: 0.4s; }
+
+        @keyframes navFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .section-nav-label {
+            opacity: 0;
+            animation: navFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+        }
+
+        /* ══════════════════════════════════════
+           WORK SECTION
+           ══════════════════════════════════════ */
+        .work {
+            position: relative;
+            min-height: 100vh;
+            padding: 140px var(--section-pad) 100px;
+            background: var(--black);
+        }
+
+        .section-header {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 60px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bento-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--gray-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--white);
+            display: block;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+        }
+
+        .bento-item:hover {
+            transform: scale(1.015);
+            filter: brightness(1.1);
+        }
+
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.85;
+            transition: opacity 0.4s ease;
+        }
+
+        .bento-item:hover img {
+            opacity: 1;
+        }
+
+        .bento-item .bento-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .bento-overlay .bento-overlay-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bento-overlay .project-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .bento-overlay .project-tag {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--gray-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bento-arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .bento-arrow svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .bento-item:hover .bento-arrow {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Bento layout — 1 wide top, 2 equal bottom */
+        .bento-item:nth-child(1) {
+            grid-column: span 2;
+            aspect-ratio: 2 / 0.9;
+        }
+        .bento-item:nth-child(2),
+        .bento-item:nth-child(3) {
+            grid-column: span 1;
+            aspect-ratio: 1 / 0.85;
+        }
+
+        /* ══════════════════════════════════════
+           PROFILE SECTION
+           ══════════════════════════════════════ */
+        .profile {
+            position: relative;
+            min-height: 100vh;
+            padding: 140px var(--section-pad) 100px;
+            background: var(--black);
+        }
+
+        .profile-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .profile-text h2 {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 4vw, 60px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 28px;
+        }
+
+        .profile-text p {
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--gray-dim);
+            max-width: 520px;
+        }
+
+        .profile-image {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--gray-card);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── EXPERIENCE LIST ── */
+        .experience-section {
+            padding-top: 40px;
+        }
+
+        .experience-section h3 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 60px;
+        }
+
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: center;
+            padding: 28px 0;
+            border-top: 1px solid var(--gray-line);
+            transition: background 0.3s ease;
+        }
+
+        .experience-item:last-child {
+            border-bottom: 1px solid var(--gray-line);
+        }
+
+        .exp-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-right: 24px;
+            background: var(--gray-card);
+        }
+
+        .exp-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .exp-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .exp-company {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 2.5vw, 32px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .exp-role {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .exp-role .title {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--white);
+        }
+
+        .exp-role .dept {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--gray-dim);
+        }
+
+        .exp-date {
+            flex-shrink: 0;
+            margin-left: 24px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-dim);
+            padding: 8px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        /* ══════════════════════════════════════
+           CONTACT SECTION
+           ══════════════════════════════════════ */
+        .contact {
+            position: relative;
+            min-height: 100vh;
+            padding: 140px var(--section-pad) 80px;
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-heading {
+            font-family: var(--font-display);
+            font-size: clamp(40px, 5vw, 72px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-heading .arrow-down {
+            display: inline-block;
+            font-size: 0.8em;
+        }
+
+        .contact-footer {
+            margin-top: auto;
+        }
+
+        .contact-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--gray-line);
+            margin-bottom: 50px;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .contact-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-email {
+            font-family: var(--font-display);
+            font-size: clamp(20px, 2.5vw, 32px);
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-email:hover {
+            opacity: 0.6;
+        }
+
+        .contact-location {
+            font-family: var(--font-body);
+            font-size: clamp(16px, 2vw, 24px);
+            font-weight: 300;
+            color: var(--gray-dim);
+            line-height: 1.4;
+        }
+
+        .contact-socials {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .contact-socials a {
+            font-family: var(--font-display);
+            font-size: clamp(18px, 2vw, 28px);
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.3px;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-socials a:hover {
+            opacity: 0.5;
+        }
+
+        /* ══════════════════════════════════════
+           SCROLL REVEAL
+           ══════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* stagger children */
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger.visible > *:nth-child(1)  { transition-delay: 0.0s; }
+        .reveal-stagger.visible > *:nth-child(2)  { transition-delay: 0.06s; }
+        .reveal-stagger.visible > *:nth-child(3)  { transition-delay: 0.12s; }
+        .reveal-stagger.visible > *:nth-child(4)  { transition-delay: 0.18s; }
+        .reveal-stagger.visible > *:nth-child(5)  { transition-delay: 0.24s; }
+        .reveal-stagger.visible > *:nth-child(6)  { transition-delay: 0.30s; }
+        .reveal-stagger.visible > *:nth-child(7)  { transition-delay: 0.36s; }
+
+        /* ══════════════════════════════════════
+           RESPONSIVE
+           ══════════════════════════════════════ */
+        @media (max-width: 768px) {
+            :root { --section-pad: 24px; }
+
+            nav {
+                padding: 20px 24px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero-video {
+                height: 45vh;
+            }
+
+            .portfolio-text {
+                font-size: 40px;
+                letter-spacing: -2px;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-item:nth-child(1),
+            .bento-item:nth-child(2),
+            .bento-item:nth-child(3) { grid-column: span 1; aspect-ratio: 2 / 1; }
+
+            .profile-intro {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .exp-date {
+                display: none;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">A</a>
+        <span class="nav-name">Aram Rahimi</span>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#profile">Profile</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ════ HERO ════ -->
+    <section class="hero" id="hero">
+        <div class="video-container">
+            <video
+                class="hero-video"
+                autoplay
+                loop
+                muted
+                playsinline
+                disablepictureinpicture
+                src="final_spin.mp4"
+            ></video>
+            <div class="video-glow"></div>
+        </div>
+
+        <div class="section-bottom">
+            <a href="#work" class="section-nav-label">
+                Work <span class="arrow">&darr;</span>
+            </a>
+            <span class="portfolio-text">Portfolio</span>
+        </div>
+    </section>
+
+    <!-- ════ WORK ════ -->
+    <section class="work" id="work">
+        <h2 class="section-header reveal">Selected Work</h2>
+
+        <div class="bento-grid reveal-stagger">
+            <a href="https://github.com" target="_blank" rel="noopener" class="bento-item">
+                <img src="swift.png" alt="Project">
+                <div class="bento-overlay">
+                    <div class="bento-overlay-text">
+                        <span class="project-tag">iOS Application</span>
+                        <span class="project-title">SwiftUI Dashboard</span>
+                    </div>
+                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                </div>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="bento-item">
+                <img src="swift.png" alt="Project">
+                <div class="bento-overlay">
+                    <div class="bento-overlay-text">
+                        <span class="project-tag">Mobile</span>
+                        <span class="project-title">Fitness Tracker</span>
+                    </div>
+                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                </div>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="bento-item">
+                <img src="swift.png" alt="Project">
+                <div class="bento-overlay">
+                    <div class="bento-overlay-text">
+                        <span class="project-tag">Widget Kit</span>
+                        <span class="project-title">Weather Widget</span>
+                    </div>
+                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="section-bottom">
+            <a href="#profile" class="section-nav-label">
+                Profile <span class="arrow">&darr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ════ PROFILE ════ -->
+    <section class="profile" id="profile">
+        <div class="profile-intro reveal">
+            <div class="profile-text">
+                <h2>iOS Developer<br>crafting native<br>experiences</h2>
+                <p>I'm Aram Rahimi — an iOS developer based in Stockholm, Sweden. I specialize in building polished, performant mobile applications with SwiftUI and UIKit. I care deeply about clean architecture, fluid animations, and interfaces that feel right at home on Apple platforms.</p>
+            </div>
+            <div class="profile-image">
+                <img src="swift.png" alt="Aram Rahimi">
+            </div>
+        </div>
+
+        <div class="experience-section">
+            <h3 class="reveal">Experience</h3>
+
+            <ul class="experience-list reveal-stagger">
+                <li class="experience-item">
+                    <div class="exp-icon"><img src="swift.png" alt="Apple"></div>
+                    <div class="exp-info">
+                        <div class="exp-company">Apple</div>
+                        <div class="exp-role">
+                            <span class="title">Senior iOS Developer</span>
+                            <span class="dept">SwiftUI Team</span>
+                        </div>
+                    </div>
+                    <div class="exp-date">Sept 2022 &mdash; Present</div>
+                </li>
+                <li class="experience-item">
+                    <div class="exp-icon"><img src="swift.png" alt="Google"></div>
+                    <div class="exp-info">
+                        <div class="exp-company">Google</div>
+                        <div class="exp-role">
+                            <span class="title">iOS Developer</span>
+                            <span class="dept">Maps Team</span>
+                        </div>
+                    </div>
+                    <div class="exp-date">July 2020 &mdash; Aug 2022</div>
+                </li>
+                <li class="experience-item">
+                    <div class="exp-icon"><img src="swift.png" alt="Spotify"></div>
+                    <div class="exp-info">
+                        <div class="exp-company">Spotify</div>
+                        <div class="exp-role">
+                            <span class="title">Junior iOS Developer</span>
+                            <span class="dept">Playback Team</span>
+                        </div>
+                    </div>
+                    <div class="exp-date">July 2018 &mdash; Jun 2020</div>
+                </li>
+                <li class="experience-item">
+                    <div class="exp-icon"><img src="swift.png" alt="Uber"></div>
+                    <div class="exp-info">
+                        <div class="exp-company">Uber</div>
+                        <div class="exp-role">
+                            <span class="title">iOS Engineering Intern</span>
+                            <span class="dept">Rider Experience</span>
+                        </div>
+                    </div>
+                    <div class="exp-date">Jan 2018 &mdash; Jul 2018</div>
+                </li>
+                <li class="experience-item">
+                    <div class="exp-icon"><img src="swift.png" alt="Amazon"></div>
+                    <div class="exp-info">
+                        <div class="exp-company">Amazon</div>
+                        <div class="exp-role">
+                            <span class="title">Software Developer Intern</span>
+                            <span class="dept">Alexa Mobile</span>
+                        </div>
+                    </div>
+                    <div class="exp-date">Jun 2017 &mdash; Dec 2017</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-bottom">
+            <a href="#contact" class="section-nav-label">
+                Contact <span class="arrow">&darr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ════ CONTACT ════ -->
+    <section class="contact" id="contact">
+        <div class="contact-heading reveal">
+            Get in touch <span class="arrow-down">&darr;</span>
+        </div>
+
+        <div class="contact-footer">
+            <div class="contact-divider"></div>
+            <div class="contact-grid reveal">
+                <div class="contact-left">
+                    <a href="mailto:hello@aramrahimi.com" class="contact-email">hello@aramrahimi.com</a>
+                    <span class="contact-location">Based in<br>Stockholm, Sweden</span>
+                </div>
+                <div class="contact-socials">
+                    <a href="#">GitHub</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    (() => {
+        /* ── Firework dots ── */
+        const patterns = [
+            Array.from({ length: 8 }, (_, i) => [i * 45, 40 + Math.random() * 30]),
+            [[30, 55], [110, 40], [170, 65], [230, 35], [290, 50], [350, 45]],
+            [[0, 50], [90, 50], [180, 50], [270, 50], [45, 35], [135, 35], [225, 35]],
+        ];
+
+        document.addEventListener('pointerdown', (e) => {
+            if (e.target.closest('a, button, .nav-logo, .section-nav-label, .contact-socials, .contact-email, .bento-item')) return;
+
+            const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+            const x = e.clientX;
+            const y = e.clientY;
+
+            pattern.forEach(([angle, dist]) => {
+                const dot = document.createElement('div');
+                const size = 3 + Math.random() * 2;
+                Object.assign(dot.style, {
+                    position: 'fixed',
+                    left: x + 'px',
+                    top: y + 'px',
+                    width: size + 'px',
+                    height: size + 'px',
+                    borderRadius: '50%',
+                    background: '#fff',
+                    pointerEvents: 'none',
+                    zIndex: '9999',
+                    opacity: '1',
+                    transition: 'none',
+                });
+                document.body.appendChild(dot);
+
+                const rad = angle * Math.PI / 180;
+                const tx = Math.cos(rad) * dist;
+                const ty = Math.sin(rad) * dist;
+                const duration = 400 + Math.random() * 200;
+
+                requestAnimationFrame(() => {
+                    dot.style.transition = `transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1), opacity ${duration}ms ease-out`;
+                    dot.style.transform = `translate(${tx}px, ${ty}px)`;
+                    dot.style.opacity = '0';
+                });
+
+                setTimeout(() => dot.remove(), duration + 50);
+            });
+        });
+
+        /* ── Scroll reveal ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+            observer.observe(el);
+        });
+    })();
+    </script>
+
+</body>
+</html>
