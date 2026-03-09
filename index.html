@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aram Rahimi — Portfolio 2025</title>
+    <title>Aram Rahimi</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect x='1' y='1' width='34' height='34' rx='6' ry='6' fill='none' stroke='white' stroke-width='2'/%3E%3Ctext x='18' y='24' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='18' fill='white'%3EA%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -297,7 +298,9 @@
             cursor: pointer;
             text-decoration: none;
             color: var(--white);
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
         }
 
@@ -307,12 +310,13 @@
         }
 
         .bento-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 55%;
+            height: auto;
+            object-fit: contain;
             display: block;
             opacity: 0.85;
             transition: opacity 0.4s ease;
+            border-radius: 16px;
         }
 
         .bento-item:hover img {
@@ -404,7 +408,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            align-items: center;
+            align-items: end;
             margin-bottom: 120px;
         }
 
@@ -427,105 +431,89 @@
         }
 
         .profile-image {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--gray-card);
+            align-self: end;
+            position: relative;
         }
 
         .profile-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
             display: block;
-        }
-
-        /* ── EXPERIENCE LIST ── */
-        .experience-section {
-            padding-top: 40px;
-        }
-
-        .experience-section h3 {
-            font-family: var(--font-display);
-            font-size: clamp(28px, 3.5vw, 48px);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            margin-bottom: 60px;
-        }
-
-        .experience-list {
-            list-style: none;
-        }
-
-        .experience-item {
-            display: flex;
-            align-items: center;
-            padding: 28px 0;
-            border-top: 1px solid var(--gray-line);
-            transition: background 0.3s ease;
-        }
-
-        .experience-item:last-child {
-            border-bottom: 1px solid var(--gray-line);
-        }
-
-        .exp-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            margin-right: 24px;
-            background: var(--gray-card);
-        }
-
-        .exp-icon img {
-            width: 100%;
-            height: 100%;
+            position: relative;
+            z-index: 1;
             object-fit: cover;
-            display: block;
+            object-position: top;
+            mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
         }
 
-        .exp-info {
-            flex: 1;
-            min-width: 0;
+        .dot-grid-canvas {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            right: -50px;
+            bottom: -50px;
+            z-index: 0;
+            pointer-events: none;
+            mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
         }
 
-        .exp-company {
-            font-family: var(--font-display);
-            font-size: clamp(22px, 2.5vw, 32px);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
+        /* ── CURRENTLY AT ── */
+        .currently-at {
+            margin-top: 32px;
         }
 
-        .exp-role {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 4px;
-        }
-
-        .exp-role .title {
-            font-family: var(--font-body);
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--white);
-        }
-
-        .exp-role .dept {
+        .currently-at-label {
             font-family: var(--font-body);
             font-size: 12px;
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 1.2px;
             color: var(--gray-dim);
+            display: block;
+            margin-bottom: 16px;
         }
 
-        .exp-date {
+        .currently-at-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 0;
+            border-top: 1px solid var(--gray-line);
+            border-bottom: 1px solid var(--gray-line);
+        }
+
+        .currently-at-icon {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .currently-at-info {
+            flex: 1;
+        }
+
+        .currently-at-company {
+            font-family: var(--font-display);
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .currently-at-role {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--gray-dim);
+            margin-top: 4px;
+        }
+
+        .currently-at-date {
             flex-shrink: 0;
             margin-left: 24px;
             font-family: var(--font-body);
@@ -614,6 +602,39 @@
             line-height: 1.4;
         }
 
+        .location-city {
+            cursor: default;
+            background: linear-gradient(
+                90deg,
+                var(--gray-dim) 0%,
+                var(--gray-dim) 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .location-city:hover {
+            background: linear-gradient(
+                90deg,
+                #006AA7 0%,
+                #FECC02 25%,
+                #006AA7 50%,
+                #FECC02 75%,
+                #006AA7 100%
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: swedenShimmer 3s linear infinite;
+        }
+
+        @keyframes swedenShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
         .contact-socials {
             display: flex;
             flex-direction: column;
@@ -632,6 +653,17 @@
 
         .contact-socials a:hover {
             opacity: 0.5;
+        }
+
+        .contact-socials a .arrow-up {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            vertical-align: top;
+            font-size: 0.6em;
+        }
+
+        .contact-socials a:hover .arrow-up {
+            transform: translate(3px, -3px);
         }
 
         /* ══════════════════════════════════════
@@ -710,10 +742,6 @@
                 gap: 40px;
             }
 
-            .exp-date {
-                display: none;
-            }
-
             .contact-grid {
                 flex-direction: column;
                 gap: 50px;
@@ -762,32 +790,32 @@
         <h2 class="section-header reveal">Selected Work</h2>
 
         <div class="bento-grid reveal-stagger">
-            <a href="https://github.com" target="_blank" rel="noopener" class="bento-item">
+            <a href="https://apps.apple.com/se/app/trackr-subscriptions-manager/id6749280286" target="_blank" rel="noopener" class="bento-item">
+                <img src="sloth_face_original.png" alt="Project">
+                <div class="bento-overlay">
+                    <div class="bento-overlay-text">
+                        <span class="project-tag">iOS Application</span>
+                        <span class="project-title">Trackr - Subscriptions Manager</span>
+                    </div>
+                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                </div>
+            </a>
+            <a href="https://github.com/aramr/Prayaholic" target="_blank" rel="noopener" class="bento-item">
+                <img src="pray.png" alt="Project">
+                <div class="bento-overlay">
+                    <div class="bento-overlay-text">
+                        <span class="project-tag">iOS Application</span>
+                        <span class="project-title">Prayaholic</span>
+                    </div>
+                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                </div>
+            </a>
+            <a href="" target="_blank" rel="noopener" class="bento-item">
                 <img src="swift.png" alt="Project">
                 <div class="bento-overlay">
                     <div class="bento-overlay-text">
                         <span class="project-tag">iOS Application</span>
-                        <span class="project-title">SwiftUI Dashboard</span>
-                    </div>
-                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
-                </div>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="bento-item">
-                <img src="swift.png" alt="Project">
-                <div class="bento-overlay">
-                    <div class="bento-overlay-text">
-                        <span class="project-tag">Mobile</span>
-                        <span class="project-title">Fitness Tracker</span>
-                    </div>
-                    <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
-                </div>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="bento-item">
-                <img src="swift.png" alt="Project">
-                <div class="bento-overlay">
-                    <div class="bento-overlay-text">
-                        <span class="project-tag">Widget Kit</span>
-                        <span class="project-title">Weather Widget</span>
+                        <span class="project-title">TBA</span>
                     </div>
                     <div class="bento-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
                 </div>
@@ -807,72 +835,22 @@
             <div class="profile-text">
                 <h2>iOS Developer<br>crafting native<br>experiences</h2>
                 <p>I'm Aram Rahimi — an iOS developer based in Stockholm, Sweden. I specialize in building polished, performant mobile applications with SwiftUI and UIKit. I care deeply about clean architecture, fluid animations, and interfaces that feel right at home on Apple platforms.</p>
+                <div class="currently-at">
+                    <span class="currently-at-label">Currently working @</span>
+                    <div class="currently-at-row">
+                        <img src="polisen.png" alt="Swedish Police Authority" class="currently-at-icon">
+                        <div class="currently-at-info">
+                            <div class="currently-at-company">Swedish Police Authority</div>
+                            <div class="currently-at-role">iOS Developer</div>
+                        </div>
+                        <div class="currently-at-date">Sept 2021 &mdash; Present</div>
+                    </div>
+                </div>
             </div>
             <div class="profile-image">
-                <img src="swift.png" alt="Aram Rahimi">
+                <canvas class="dot-grid-canvas" id="dotGrid"></canvas>
+                <img src="aram_profilepic.png" alt="Aram Rahimi">
             </div>
-        </div>
-
-        <div class="experience-section">
-            <h3 class="reveal">Experience</h3>
-
-            <ul class="experience-list reveal-stagger">
-                <li class="experience-item">
-                    <div class="exp-icon"><img src="swift.png" alt="Apple"></div>
-                    <div class="exp-info">
-                        <div class="exp-company">Apple</div>
-                        <div class="exp-role">
-                            <span class="title">Senior iOS Developer</span>
-                            <span class="dept">SwiftUI Team</span>
-                        </div>
-                    </div>
-                    <div class="exp-date">Sept 2022 &mdash; Present</div>
-                </li>
-                <li class="experience-item">
-                    <div class="exp-icon"><img src="swift.png" alt="Google"></div>
-                    <div class="exp-info">
-                        <div class="exp-company">Google</div>
-                        <div class="exp-role">
-                            <span class="title">iOS Developer</span>
-                            <span class="dept">Maps Team</span>
-                        </div>
-                    </div>
-                    <div class="exp-date">July 2020 &mdash; Aug 2022</div>
-                </li>
-                <li class="experience-item">
-                    <div class="exp-icon"><img src="swift.png" alt="Spotify"></div>
-                    <div class="exp-info">
-                        <div class="exp-company">Spotify</div>
-                        <div class="exp-role">
-                            <span class="title">Junior iOS Developer</span>
-                            <span class="dept">Playback Team</span>
-                        </div>
-                    </div>
-                    <div class="exp-date">July 2018 &mdash; Jun 2020</div>
-                </li>
-                <li class="experience-item">
-                    <div class="exp-icon"><img src="swift.png" alt="Uber"></div>
-                    <div class="exp-info">
-                        <div class="exp-company">Uber</div>
-                        <div class="exp-role">
-                            <span class="title">iOS Engineering Intern</span>
-                            <span class="dept">Rider Experience</span>
-                        </div>
-                    </div>
-                    <div class="exp-date">Jan 2018 &mdash; Jul 2018</div>
-                </li>
-                <li class="experience-item">
-                    <div class="exp-icon"><img src="swift.png" alt="Amazon"></div>
-                    <div class="exp-info">
-                        <div class="exp-company">Amazon</div>
-                        <div class="exp-role">
-                            <span class="title">Software Developer Intern</span>
-                            <span class="dept">Alexa Mobile</span>
-                        </div>
-                    </div>
-                    <div class="exp-date">Jun 2017 &mdash; Dec 2017</div>
-                </li>
-            </ul>
         </div>
 
         <div class="section-bottom">
@@ -892,14 +870,12 @@
             <div class="contact-divider"></div>
             <div class="contact-grid reveal">
                 <div class="contact-left">
-                    <a href="mailto:hello@aramrahimi.com" class="contact-email">hello@aramrahimi.com</a>
-                    <span class="contact-location">Based in<br>Stockholm, Sweden</span>
+                    <a href="mailto:aramrahimi1@hotmail.com" class="contact-email">aramrahimi1@hotmail.com</a>
+                    <span class="contact-location">Based in<br><span class="location-city">Stockholm, Sweden</span></span>
                 </div>
                 <div class="contact-socials">
-                    <a href="#">GitHub</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
+                    <a href="https://github.com/aramr" target="_blank" rel="noopener">GitHub <span class="arrow-up">&nearr;</span></a>
+                    <a href="https://www.linkedin.com/in/aram-rahimi-07b376162/" target="_blank" rel="noopener">LinkedIn <span class="arrow-up">&nearr;</span></a>
                 </div>
             </div>
         </div>
@@ -953,6 +929,139 @@
                 setTimeout(() => dot.remove(), duration + 50);
             });
         });
+
+        /* ── Dot grid behind profile image ── */
+        const dotCanvas = document.getElementById('dotGrid');
+        const dotCtx = dotCanvas.getContext('2d');
+        const profileImage = dotCanvas.closest('.profile-image');
+        const DOT_SPACING = 20;
+        const DOT_BASE_RADIUS = 1.5;
+        const DOT_BASE_ALPHA = 0.25;
+        const RIPPLE_RADIUS = 120;
+        const PAD = 50;
+        let dotMouseX = -9999, dotMouseY = -9999;
+        let dotHovering = false;
+        let dots = [];
+        let dotAnimFrame;
+        let alphaMap = null;
+        let alphaMapW = 0, alphaMapH = 0;
+
+        function buildAlphaMap(img, displayW, displayH) {
+            const offscreen = document.createElement('canvas');
+            offscreen.width = displayW;
+            offscreen.height = displayH;
+            const octx = offscreen.getContext('2d');
+            octx.drawImage(img, 0, 0, displayW, displayH);
+            const imageData = octx.getImageData(0, 0, displayW, displayH);
+            alphaMap = imageData.data;
+            alphaMapW = displayW;
+            alphaMapH = displayH;
+        }
+
+        function getImageAlpha(canvasX, canvasY) {
+            if (!alphaMap) return 0;
+            const imgX = Math.round(canvasX - PAD);
+            const imgY = Math.round(canvasY - PAD);
+            if (imgX < 0 || imgX >= alphaMapW || imgY < 0 || imgY >= alphaMapH) return 0;
+            const idx = (imgY * alphaMapW + imgX) * 4;
+            return alphaMap[idx + 3] / 255;
+        }
+
+        function initDots() {
+            const rect = profileImage.getBoundingClientRect();
+            const w = rect.width + PAD * 2;
+            const h = rect.height + PAD * 2;
+            const dpr = window.devicePixelRatio || 1;
+            dotCanvas.width = w * dpr;
+            dotCanvas.height = h * dpr;
+            dotCanvas.style.width = w + 'px';
+            dotCanvas.style.height = h + 'px';
+            dotCtx.scale(dpr, dpr);
+
+            const profileImg = profileImage.querySelector('img');
+            buildAlphaMap(profileImg, Math.round(rect.width), Math.round(rect.height));
+
+            dots = [];
+            const cols = Math.floor(w / DOT_SPACING);
+            const rows = Math.floor(h / DOT_SPACING);
+            const offsetX = (w - (cols - 1) * DOT_SPACING) / 2;
+            const offsetY = (h - (rows - 1) * DOT_SPACING) / 2;
+
+            for (let r = 2; r < rows; r++) {
+                for (let c = 1; c < cols; c++) {
+                    const x = offsetX + c * DOT_SPACING;
+                    const y = offsetY + r * DOT_SPACING;
+                    const imgAlpha = getImageAlpha(x, y);
+                    if (imgAlpha > 0.5) continue;
+                    dots.push({
+                        x, y,
+                        scale: 1,
+                        alpha: DOT_BASE_ALPHA,
+                        targetScale: 1,
+                        targetAlpha: DOT_BASE_ALPHA,
+                    });
+                }
+            }
+        }
+
+        function drawDots() {
+            const dpr = window.devicePixelRatio || 1;
+            dotCtx.clearRect(0, 0, dotCanvas.width / dpr, dotCanvas.height / dpr);
+
+            const rect = profileImage.getBoundingClientRect();
+            const localX = dotMouseX - rect.left + PAD;
+            const localY = dotMouseY - rect.top + PAD;
+            const now = performance.now();
+
+            for (let i = 0; i < dots.length; i++) {
+                const d = dots[i];
+
+                if (dotHovering) {
+                    const dx = d.x - localX;
+                    const dy = d.y - localY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const t = Math.max(0, 1 - dist / RIPPLE_RADIUS);
+                    const wave = Math.sin(dist * 0.04 - now * 0.004) * 0.5 + 0.5;
+                    d.targetScale = 1 + t * 2.5 * wave;
+                    d.targetAlpha = DOT_BASE_ALPHA + t * (0.85 - DOT_BASE_ALPHA) * wave;
+                } else {
+                    d.targetScale = 1;
+                    d.targetAlpha = DOT_BASE_ALPHA;
+                }
+
+                d.scale += (d.targetScale - d.scale) * 0.12;
+                d.alpha += (d.targetAlpha - d.alpha) * 0.12;
+
+                const r = DOT_BASE_RADIUS * d.scale;
+                dotCtx.beginPath();
+                dotCtx.arc(d.x, d.y, r, 0, Math.PI * 2);
+                dotCtx.fillStyle = `rgba(255, 255, 255, ${d.alpha})`;
+                dotCtx.fill();
+            }
+
+            dotAnimFrame = requestAnimationFrame(drawDots);
+        }
+
+        profileImage.style.pointerEvents = 'auto';
+        profileImage.addEventListener('mouseenter', () => { dotHovering = true; });
+        profileImage.addEventListener('mouseleave', () => { dotHovering = false; dotMouseX = -9999; dotMouseY = -9999; });
+        profileImage.addEventListener('mousemove', (e) => { dotMouseX = e.clientX; dotMouseY = e.clientY; });
+
+        function startDotGrid() {
+            cancelAnimationFrame(dotAnimFrame);
+            dotCtx.setTransform(1, 0, 0, 1, 0, 0);
+            initDots();
+            drawDots();
+        }
+
+        const profileImg = profileImage.querySelector('img');
+        if (profileImg.complete) {
+            startDotGrid();
+        } else {
+            profileImg.addEventListener('load', startDotGrid);
+        }
+
+        window.addEventListener('resize', startDotGrid);
 
         /* ── Scroll reveal ── */
         const observer = new IntersectionObserver((entries) => {
